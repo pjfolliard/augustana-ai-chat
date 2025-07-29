@@ -1,0 +1,14 @@
+{
+  "functions": {
+    "app/api/*/route.ts": {
+      "maxDuration": 30
+    }
+  },
+  "regions": ["iad1"],
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ]
+}
