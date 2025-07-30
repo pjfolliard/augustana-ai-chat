@@ -33,17 +33,18 @@ export async function POST(request: NextRequest) {
       try {
         const results = await searchWeb(message, 3)
         if (results.length > 0) {
-          searchResults = '\n\nCurrent web search results:\n' + 
+          searchResults = '\n\n🔍 **WEB SEARCH RESULTS** for "' + message + '":\n\n' + 
             results.map((result, index) => 
-              `${index + 1}. **${result.title}**\n   ${result.snippet}\n   Source: ${result.url}\n`
-            ).join('\n')
+              `**${index + 1}. ${result.title}**\n${result.snippet}${result.url ? `\nSource: ${result.url}` : ''}\n`
+            ).join('\n') + 
+            '\n*Note: Please use this current web information to provide an accurate and up-to-date response.*'
           console.log(`API: Found ${results.length} search results`)
         } else {
-          searchResults = '\n\n(No search results found for this query)'
+          searchResults = '\n\n🔍 **WEB SEARCH**: No current results found for "' + message + '". Please provide information based on general knowledge.'
         }
       } catch (error) {
         console.error('Search failed:', error)
-        searchResults = '\n\n(Web search unavailable at the moment)'
+        searchResults = '\n\n🔍 **WEB SEARCH**: Currently unavailable. Please provide information based on general knowledge.'
       }
     }
 
