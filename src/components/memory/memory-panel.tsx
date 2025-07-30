@@ -83,8 +83,8 @@ export function MemoryPanel({ isOpen, onClose }: MemoryPanelProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex justify-end">
-      <div className="w-96 bg-white shadow-xl flex flex-col">
+    <div className="fixed right-0 top-0 h-full z-50 flex">
+      <div className="w-96 bg-white shadow-xl flex flex-col border-l border-gray-200">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b bg-gray-50">
           <h2 className="text-lg font-semibold">My Memory</h2>
